@@ -1,0 +1,41 @@
+/*********************************************
+ * OPL 12.10.0.0 Data
+ * Author: Summair Anis
+ * Creation Date: 1 Apr 2021 at 11:55:27
+ *********************************************/
+nz = 389; 
+nv = 20; 
+dum = 5;
+sp=1.6;
+nt = 2;
+ww = 0.4;
+alpha = 2;
+delta = 0.5 ;
+
+SheetConnection excelsheet(".\\Data_Sheet_updated.xlsx");
+
+num_veh from SheetRead(excelsheet, "num_veh!C3:OA3");
+CAI_PT from SheetRead(excelsheet, "CAI_PT!C3:OA4");
+acc from SheetRead(excelsheet, "acc!B2:B390");
+Delta from SheetRead(excelsheet, "Delta!F2:G390");
+penalty from SheetRead(excelsheet, "Delta!H2:I390");
+//nb_TW from SheetRead(excelsheet,"datamm!G2:K49");
+dr from SheetRead(excelsheet,"dd!B2:C390");
+
+
+nb_TW from SheetRead(excelsheet,"TW!D2:D3891");
+nb_OW from SheetRead(excelsheet,"OW!D2:D3891");
+CAI_max = [14.25 9.90];
+ve = [1 2 3 4 5];//6 7 8 9 10 11 12 13 14 15];
+
+
+ gamma2 = 14.003;	// k€ - generic parameter for implementation cost 
+ 					//https://www.inflationtool.com/euro-germany/1999-to-present-value
+ 					//reference : https://www.icscarsharing.it/wp-content/uploads/2017/01/Libro_Car_Sharing_analisi_economica_e_organizzativa_del_settore.pdf
+ B_CAI = 500;   // K€ - budget
+ 					//refrence: https://reopenspl.invitalia.it/-/media/spl/documents/provincia-trento-tpl/14-monitor-trasporti-prov-trento.pdf?la=it-it&hash=EBDE53E6AC3764B88FCC3A7418EAE60F8384EA29#:~:text=Il%20Bilancio%20di%20Previsione%20(2019,dalla%20media%20delle%20regioni%20italiane.
+ //gamma3 = 14;	//  - K€ average cost of buying/mainain a vehcile 
+ 				//Reference: https://www.carsharing.tn.it/wp-content/uploads/2016/11/GenteMotori-CARSHARING.pdf
+ gamma1 = 6.9;
+ //18.450;  // - K€ Management of CS depots including, parking fee, administration, cleaning, management etc.
+ 					// reference: http://www.sttholding.com/documenti/avviso-concessione-servizio-parcheggio-Stazione-ExBoschi/2019_Allegato_3__Relazione-Piano-Economico-Finanziario_Rev_2.pdf
